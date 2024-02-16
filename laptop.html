@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunset Animation with Curved Clouds, Curved Sea, and More</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #FFD700 0%, #ffaa00 100%); /* Gradient sky background */
+            animation: changeSkyColor 5s linear infinite alternate; /* Sky color change animation */
+        }
+
+        @keyframes changeSkyColor {
+            0% {
+                background: linear-gradient(to bottom, #FFD700 0%, #ffaa00 100%);
+            }
+            100% {
+                background: linear-gradient(to bottom, #ffaa00 0%, #FFD700 100%);
+            }
+        }
+
+        .sunset-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .sea {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50vh;
+            background: #0077be; /* Dark blue color for the sea */
+            border-radius: 0% 0% 100% 100%; /* Curved sea effect */
+            z-index: 1;
+        }
+
+        .sea-reflection {
+            position: absolute;
+            bottom: -10vh;
+            left: 0;
+            width: 100%;
+            height: 10vh;
+            background: rgba(0, 119, 190, 0.3); /* Semi-transparent sea reflection color */
+            border-radius: 0% 0% 100% 100%; /* Curved reflection effect */
+            z-index: 0;
+        }
+
+        .sun {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #FFD700; /* Yellow color for the sun */
+            border-radius: 50%;
+            bottom: calc(50vh - 50px); /* Initial position at the middle of the screen */
+            left: 50%;
+            transform: translateX(-50%);
+            transition: bottom 5s linear; /* Animation duration and timing function */
+            z-index: 2;
+        }
+
+        .cloud {
+            position: absolute;
+            width: 120px;
+            height: 80px;
+            background-color: #ffffff; /* White color for clouds */
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; /* Elliptical shape for clouds */
+            opacity: 0.8;
+            z-index: 3;
+            animation: moveCloud 10s linear infinite alternate; /* Cloud movement animation */
+        }
+
+        @keyframes moveCloud {
+            0% {
+                left: -120px;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .bird {
+            position: absolute;
+            width: 30px;
+            height: 20px;
+            background-color: #000;
+            clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+            z-index: 4;
+            animation: flyBird 10s linear infinite alternate; /* Bird flying animation */
+        }
+
+        @keyframes flyBird {
+            0% {
+                left: -30px;
+                transform: scaleX(1);
+            }
+            100% {
+                left: 100%;
+                transform: scaleX(-1);
+            }
+        }
+
+        .mountain {
+            position: absolute;
+            bottom: 0;
+            left: 30%;
+            width: 300px;
+            height: 150px;
+            background: #8B4513; /* Brown color for mountains */
+            clip-path: polygon(0 100%, 50% 0, 100% 100%);
+            z-index: 5;
+        }
+
+        .mountain-reflection {
+            position: absolute;
+            bottom: -10vh;
+            left: 30%;
+            width: 300px;
+            height: 10vh;
+            background: rgba(139, 69, 19, 0.3); /* Semi-transparent reflection color */
+            clip-path: polygon(0 100%, 50% 0, 100% 100%);
+            z-index: 0;
+        }
+
+        .boat {
+            position: absolute;
+            bottom: 5vh;
+            left: 60%;
+            width: 80px;
+            height: 40px;
+            background: #8B4513; /* Brown color for boat */
+            clip-path: polygon(0 0, 100% 0%, 80% 100%, 20% 100%);
+            z-index: 6;
+            animation: sailBoat 20s linear infinite alternate; /* Boat sailing animation */
+        }
+
+        @keyframes sailBoat {
+            0% {
+                left: 60%;
+            }
+            100% {
+                left: -20%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sunset-container">
+        <div class="sea"></div>
+        <div class="sea-reflection"></div>
+        <div class="sun"></div>
+        <div class="cloud" style="top: 20%; left: 20%;"></div>
+        <div class="cloud" style="top: 10%; left: 60%;"></div>
+        <div class="cloud" style="top: 30%; left: 80%;"></div>
+        <div class="bird" style="top: 10%;"></div>
+        <div class="bird" style="top: 30%;"></div>
+        <div class="bird" style="top: 50%;"></div>
+        <div class="mountain"></div>
+        <div class="mountain-reflection"></div>
+        <div class="boat"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the sun element
+            var sun = document.querySelector('.sun');
+
+            // Animate the sunset
+            function animateSunset() {
+                sun.style.bottom = '-50px'; /* Move the sun below the horizon */
+            }
+
+            // Start the animation after a delay (you can adjust the delay as needed)
+            setTimeout(animateSunset, 1000);
+        });
+    </script>
+</body>
+</html>
